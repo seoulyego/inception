@@ -17,7 +17,7 @@ networks:
     driver: bridge
 
 volumes:
-  db-b:
+  db-v:
     name: db-v
     driver: local
     driver_opts:
