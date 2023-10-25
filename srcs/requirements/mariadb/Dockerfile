@@ -15,6 +15,3 @@ COPY    	./tools/entry.sh /
 RUN		chmod +x entry.sh
 
 ENTRYPOINT	["/usr/bin/dumb-init", "--", "/entry.sh"]
-
-# docker build -t mariadb .
-# docker run -it mariadb

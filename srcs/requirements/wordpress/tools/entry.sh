@@ -10,7 +10,7 @@ cd /var/www
 
 wp core install \
 	--path=/var/www \
-	--url=yeongo.42.fr \
+	--url=$DOMAIN_NAME \
 	--title=INCEPTION \
 	--admin_user=$ADMIN_USER \
 	--admin_password=$ADMIN_PWD \
