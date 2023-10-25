@@ -7,7 +7,7 @@ NETWORK_NAME		:=	network-inception
 .PHONY: all
 all:
 	@mkdir -p $(VOLUME_DIR)/db
-	#@mkdir -p $(VOLUME_DIR)/wordpress
+	@mkdir -p $(VOLUME_DIR)/wordpress
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up --build -d
 
 log:
@@ -18,17 +18,17 @@ up:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up
 
 .PHONY: down
+down:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
 
 .PHONY: clean
 clean: down
-	docker system prune -f -all
-	# Remove all unused images not just dangling ones
+	docker system prune -f --all # Remove all unused images not just dangling ones
 
 .PHONY: fclean
 fclean: clean
-	@rm -rf $(VOLUME_DIR)/db/*
-	#@rm -rf $(VOLUME_DIR)/wordpress/*
+	@sudo rm -rf $(VOLUME_DIR)/db
+	@sudo rm -rf $(VOLUME_DIR)/wordpress
 	@docker volume rm $$(docker volume ls -q)
 
 .PHONY: re

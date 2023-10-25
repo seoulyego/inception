@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 
 services:
@@ -7,10 +7,36 @@ services:
     env_file: .env
     build: ./requirements/mariadb
     restart: always
-    networks:
-      - intra
     volumes:
       - db-v:/var/run/mysqld
+    networks:
+      - intra
+
+  wordpress:
+    container_name: wordpress
+    env_file: .env
+    build: ./requirements/wordpress
+    restart: always
+    volumes:
+      - www-v:/var/www
+    networks:
+      - intra
+    depends_on:
+      - mariadb
+
+  nginx:
+    container_name: nginx
+    env_file: .env
+    build: ./requirements/nginx
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - www-v:/var/www
+    networks:
+      - intra
+    depends_on:
+      - wordpress
 
 networks:
   intra:
@@ -22,5 +48,13 @@ volumes:
     driver: local
     driver_opts:
       device: '/home/yeongo/data/db'
-      type: 'name'
+      type: 'none'
+      o: 'bind'
+
+  www-v:
+    name: www-v
+    driver: local
+    driver_opts:
+      device: '/home/yeongo/data/wordpress'
+      type: 'none'
       o: 'bind'

@@ -2,4 +2,5 @@
 .vscode
 .cache
 *_mac*
-
+*test*
+.env
