@@ -1,0 +1,26 @@
+version: '3'
+
+
+services:
+  mariadb:
+    container_name: mariadb
+    env_file: .env
+    build: ./requirements/mariadb
+    restart: always
+    networks:
+      - intra
+    volumes:
+      - db-v:/var/run/mysqld
+
+networks:
+  intra:
+    driver: bridge
+
+volumes:
+  db-b:
+    name: db-v
+    driver: local
+    driver_opts:
+      device: '/home/yeongo/data/db'
+      type: 'name'
+      o: 'bind'

@@ -1,6 +1,8 @@
 # Repository 인덱스 업데이트
 sudo apt-get update
 
+sudo apt-get install -y sudo vim git curl
+
 # 도커 패키지 신뢰성 추가
 # f - http의 요청 헤더의 Content-Type을 multipart/form-data로 설정
 # s - silent로 진행과정 및 오류 생략
