@@ -4,3 +4,4 @@
 *_mac*
 *test*
 .env
+install_docker.sh
