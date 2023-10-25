@@ -1,6 +1,6 @@
-FROM debian:bullseye
+FROM    debian:bullseye
 
-EXPOSE 9000
+EXPOSE  9000
 
-RUN apt-get update && \
-    apt-get -y install wordpress
+RUN     apt-get update && \
+        apt-get -y install wordpress
