@@ -1,10 +1,10 @@
-FROM    	debian:bullseye
+FROM		debian:bullseye
 
-EXPOSE  	443
+EXPOSE	 	443
 
-RUN     	apt-get update && \
-	     	apt-get upgrade && \
-        	apt-get -y install nginx openssl
+RUN	 	apt-get update && \
+		apt-get upgrade && \
+		apt-get -y install nginx openssl vim
 
 COPY		./conf/default /etc/nginx/sites-available
 

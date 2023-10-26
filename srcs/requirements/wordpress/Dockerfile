@@ -1,10 +1,10 @@
-FROM    	debian:bullseye
+FROM		debian:bullseye
 
-EXPOSE  	9000
+EXPOSE		9000
 
-RUN     	apt-get update && \
+RUN		apt-get update && \
 		apt-get upgrade && \
-		apt-get install -y php7.4 php7.4-mysql php-fpm wget curl dumb-init
+		apt-get install -y php7.4 php7.4-mysql php-fpm wget curl dumb-init vim
 
 RUN		mkdir -p /var/www/
 RUN		wget https://wordpress.org/latest.tar.gz
